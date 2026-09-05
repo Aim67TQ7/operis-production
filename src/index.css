@@ -1,0 +1,153 @@
+@import "./styles/app-bar.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Design System
+   All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Light mode - kept for compatibility but app will use dark */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.75rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark Neomorphism palette */
+    --background: 230 25% 10%;
+    --foreground: 220 20% 92%;
+    
+    --card: 230 22% 13%;
+    --card-foreground: 220 20% 92%;
+    
+    --popover: 230 22% 15%;
+    --popover-foreground: 220 20% 92%;
+    
+    --primary: 220 70% 55%;
+    --primary-foreground: 220 20% 98%;
+    
+    --secondary: 230 20% 18%;
+    --secondary-foreground: 220 20% 85%;
+    
+    --muted: 230 18% 16%;
+    --muted-foreground: 220 15% 55%;
+    
+    --accent: 260 45% 50%;
+    --accent-foreground: 220 20% 98%;
+    
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 230 15% 20%;
+    --input: 230 18% 18%;
+    --ring: 220 70% 55%;
+    
+    /* Neomorphism specific */
+    --neo-shadow-dark: 230 25% 5%;
+    --neo-shadow-light: 230 20% 18%;
+    --neo-inset-dark: 230 25% 8%;
+    --neo-inset-light: 230 18% 16%;
+    
+    /* Success/Warning states */
+    --success: 150 50% 40%;
+    --success-foreground: 150 20% 95%;
+    --warning: 40 70% 50%;
+    --warning-foreground: 40 20% 10%;
+    
+    --sidebar-background: 230 25% 8%;
+    --sidebar-foreground: 220 20% 85%;
+    --sidebar-primary: 220 70% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 230 18% 15%;
+    --sidebar-accent-foreground: 220 20% 90%;
+    --sidebar-border: 230 15% 18%;
+    --sidebar-ring: 220 70% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+}
+
+@layer components {
+  /* Neomorphism raised effect */
+  .neo-raised {
+    box-shadow: 
+      6px 6px 12px hsl(var(--neo-shadow-dark)),
+      -4px -4px 10px hsl(var(--neo-shadow-light) / 0.3);
+  }
+  
+  /* Neomorphism pressed/inset effect */
+  .neo-pressed {
+    box-shadow: 
+      inset 4px 4px 8px hsl(var(--neo-inset-dark)),
+      inset -3px -3px 6px hsl(var(--neo-inset-light) / 0.2);
+  }
+  
+  /* Neomorphism subtle hover */
+  .neo-hover {
+    transition: all 0.2s ease;
+  }
+  
+  .neo-hover:hover {
+    box-shadow: 
+      8px 8px 16px hsl(var(--neo-shadow-dark)),
+      -5px -5px 12px hsl(var(--neo-shadow-light) / 0.4);
+    transform: translateY(-1px);
+  }
+  
+  /* Custom scrollbar for dark theme */
+  .neo-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .neo-scrollbar::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  
+  .neo-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 4px;
+  }
+  
+  .neo-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+}
